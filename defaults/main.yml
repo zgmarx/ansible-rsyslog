@@ -1,0 +1,7 @@
+---
+pkg_version: 'rsyslog-8.21.0'
+pkg_state: 'installed'
+
+service_name: 'rsyslog'
+service_state: 'started'
+service_enabled: 'yes'

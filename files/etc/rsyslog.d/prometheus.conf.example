@@ -1,0 +1,15 @@
+ruleset(name="prometheus20514"){
+    action(type="omfile" file="/var/log/prometheus/prometheus.log")
+    }
+
+ruleset(name="alertmanager20515"){
+    action(type="omfile" file="/var/log/prometheus/alertmanager.log")
+    }
+
+ruleset(name="influxdb20516"){
+    action(type="omfile" file="/var/log/prometheus/influxdb.log")
+    }
+
+input(type="imptcp" port="20514" ruleset="prometheus20514")
+input(type="imptcp" port="20515" ruleset="alertmanager20515")
+input(type="imptcp" port="20516" ruleset="influxdb20516")
