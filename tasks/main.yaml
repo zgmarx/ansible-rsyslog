@@ -18,14 +18,14 @@
     dest: /etc/backup/
   delegate_to: "{{ inventory_hostname }}"
 
-- name: Synchronize and delete files in dest on the remote host that are not found in src host.
+- name: Synchronize files in dest on the remote host.
   synchronize:
     src: "etc/rsyslog.d"
     dest: "/etc/"
     delete: yes
     recursive: yes
   notify:
-  - restart rsyslog
+    - restart rsyslog
 
 # log manage
 - name: Rotate rsyslog-stats with logrotate
