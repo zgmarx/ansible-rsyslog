@@ -6,6 +6,18 @@
     state: "{{ pkg_state }}"
 
 # config manage
+- name: Create config backup dir
+  file:
+    path: /etc/backup
+    state: directory
+    mode: 0755
+
+- name: Backup config before overwrite it on target host.
+  synchronize:
+    src: /etc/rsyslog.d
+    dest: /etc/backup/
+  delegate_to: "{{ inventory_hostname }}"
+
 - name: Synchronize and delete files in dest on the remote host that are not found in src host.
   synchronize:
     src: "etc/rsyslog.d"
